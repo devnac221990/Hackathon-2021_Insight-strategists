@@ -1,0 +1,44 @@
+<apex:page standardcontroller="Custom_Users__c" extensions="WebsiteController" sidebar="false" showHeader="false" >
+    
+    
+    <apex:form >
+        <br/><br/><br/>
+        Welcome {!LoggedInUser.Name}, <br/><br/><br/>
+        <apex:pageBlock > 
+            &nbsp; &nbsp;&nbsp;&nbsp;
+            <apex:commandLink value="Symptoms"  action="{!search}" reRender="pageblock" /> &nbsp; &nbsp;&nbsp;&nbsp;
+             <apex:commandLink value="Update Profile"  action="{!getProfile}" reRender="pageblock" />&nbsp; &nbsp;&nbsp;&nbsp;
+        </apex:pageBlock>  
+        <apex:pageBlock id="pageblock" >
+          
+            <apex:pageBlockSection rendered="{!sec1}" > 
+                
+                <apex:inputCheckbox /> Feeling Nervous
+                <apex:inputCheckbox /> Feeling of Panic
+                <apex:inputCheckbox /> Breathing Rapidly
+                <apex:inputCheckbox /> Sweating
+                <apex:inputCheckbox /> Difficulty Concentrating
+
+                <apex:commandButton action="#" value="Add Symptoms"  />
+            </apex:pageBlockSection>
+           <apex:pageBlockSection rendered="{!sec4}"> 
+                <apex:pageMessages /><br/>
+                <apex:inputField value="{!LoggedInUser.Name}"/>
+                <apex:inputField value="{!LoggedInUser.Date_of_Birth__c}"/>
+                <apex:inputField value="{!LoggedInUser.Gender__c}"/>
+                <apex:inputField value="{!LoggedInUser.Country__c}"/>
+                <apex:inputField value="{!LoggedInUser.Pin_Code__c}"/>
+                <apex:inputField value="{!LoggedInUser.Mobile_No__c}"/>
+                
+                <apex:commandButton value="Update Profile" action="{!updateProfileDetails}" /> 
+                
+            </apex:pageBlockSection> 
+            
+            
+            
+            
+        </apex:pageBlock>
+        
+        
+    </apex:form>   
+</apex:page>
